@@ -1,0 +1,85 @@
+This is ccrl.exe help message.
+Copyright (C) 2014,2021 Renesas Electronics Corporation
+All rights reserved.
+
+------------------------------------------------------------------------------
+-V                     バージョン表示
+-help                  オプションの説明の表示
+-o file                出力ファイル名の指定
+-obj_path[=path]       コンパイル途中に生成される
+                       オブジェクト・ファイルの出力先指定
+-asm_path[=path]       コンパイル途中に生成される
+                       アセンブリ・ソース・ファイルの出力先指定
+-prep_path[=path]      前処理済みファイルの出力先指定
+-g                     ソース・デバッグ用情報の生成
+-cpu=core              cpu コアの指定
+-use_mda=string        演算器利用の有無を指定
+-use_mach=string       積和命令(MACHU/MACH)の有無を指定
+-lang=string           言語規格の指定
+-P                     前処理のみ実行
+-S                     アセンブラの前まで実行
+-c                     リンカの前まで実行
+-D name[=def][,name[=def]]...
+                       プリプロセッサ・マクロ/アセンブラ・シンボルの定義
+-U name[,name]...      -Dオプションの無効化
+-I path[,path]...      インクルード・ファイルを検索するパスの指定
+-preinclude=file,[file]...
+                       プレインクルードファイルの指定
+-preprocess=string[,string]
+                       プリプロセス結果の制御
+-memory_model=string   メモリ・モデルの種類を指定
+-far_rom               ROMデータのデフォルトのnear/far属性をfarにする
+-Olevel                最適化レベルの指定
+-Oitem[=value][,item[=value]]...
+                       最適化項目の詳細指定
+-goptimize             リンク時最適化用情報の生成
+-g_line                最適化時デバッグ情報の強化
+-cref=path             CS+用クロスリファレンス情報ファイルの出力
+-pass_source           アセンブリ・ソース・ファイルへのCソース出力
+-no_warning_num={num|num1-num2}[,{num|num1-num2}]...
+                       警告メッセージの個別出力抑止指定
+-change_message=error[={num|num1-num2}[,{num|num1-num2}]...]
+                       コンパイラ出力メッセージのレベル変更
+-error_file=file       エラー・メッセージ・ファイルの指定
+-dbl_size=size         double型とlong double型のサイズ指定
+-signed_char           char型を符号付きとして扱う
+-signed_bitfield       ビットフィールドをsigned型として扱う
+-switch=string         switch文に対する変換方法の指定
+-volatile              外部変数のvolatile化の指定
+-merge_string          文字列定数のマージ
+-pack                  構造体メンバのアライメントを1にする
+-stuff[=type][,type]...
+                       変数をアライメントに応じたセクションに配置
+-stack_protector[=num] スタック破壊検出コード生成の指定
+-stack_protector_all[=num]
+                       スタック破壊検出コード生成の指定
+-control_flow_integrity
+                       不正な間接関数呼び出しを検出するコードの生成
+-insert_nop_with_label=file,line,label
+                       指定した位置にローカル・ラベルと NOP 命令を挿入
+-strict_std            厳密C言語規格指定
+-refs_without_declaration
+                       宣言が無い関数を呼び出す場合エラーとする
+-large_variable        変数の最大サイズを0xffffバイトとする
+-nest_comment          /* */コメントのネストを可能にする
+-character_set=string  日本語および中国語の文字コードの指定
+-misra2004=string      MISRA-C:2004 ルールによるソースチェック
+-misra2012=string      MISRA-C:2012 ルールによるソースチェック
+-ignore_files_misra=file[,file]... 
+                       MISRA-Cチェック対象外のファイルを指定
+-check_language_extension 
+                       言語拡張により部分抑止されたMISRA-Cルールの有効化
+-misra_intermodule=file
+                       複数ファイルにまたがるMISRA-C:2012ルールによる
+                       ソースチェック情報の出力先指定
+-asmopt=arg            アセンブラ・オプションの指定
+-lnkopt=arg            リンカ・オプションの指定
+-asmcmd=file           アセンブラに直接渡すサブコマンド・ファイルの指定
+-lnkcmd=file           リンカに直接渡すサブコマンド・ファイルの指定
+-dev=file              アセンブラ、リンカが使用するデバイス・ファイルの指定
+-convert_cc={ca78k0r|nc30|iar}
+                       他コンパイラ向けに書かれたプログラムの移行を支援する
+-unaligned_pointer_for_ca78k0r
+                       ポインタ間接参照の1バイトアクセス
+------------------------------------------------------------------------------
+-subcommand=file       サブコマンド・ファイルの指定

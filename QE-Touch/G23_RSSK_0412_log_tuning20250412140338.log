@@ -1,0 +1,48 @@
+***** 2025/04/12 14:03:38 *****
+QE Version                                        :4.1.0.v20250123-0520
+Project Path                                      :C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412
+Configuration File                                :G23_RSSK_0412
+<< METHOD 0 >>
+[Slider 0]
+TS                                                : TS15, TS14, TS13, TS12, TS01,
+
+<<<< Tuning Type : Normal >>>>
+System Clock Frequency (MHz)                      :32.000
+PCLKB Frequency (MHz)                             :32.000
+CTSU Operating Frequency (MHz)                    :32.000
+Operating Voltage (V)                             :5.000
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Slider 0]
+Measurement Value (Off Min)                       : 11574
+Measurement Value (Off Max)                       : 11721
+Measurement Value (On Min)                        : 11486
+Measurement Value (On Max)                        : 13422
+Threshold                                         : 968
+  << TS15 >>
+  Measurement Value (Off)                         : 11574
+  Measurement Value (On Min)                      : 11486
+  Measurement Value (On Max)                      : 13190
+  Touch ON/OFF Difference (On)                    : 1704
+  << TS14 >>
+  Measurement Value (Off)                         : 11608
+  Measurement Value (On Min)                      : 11494
+  Measurement Value (On Max)                      : 13030
+  Touch ON/OFF Difference (On)                    : 1536
+  << TS13 >>
+  Measurement Value (Off)                         : 11683
+  Measurement Value (On Min)                      : 11574
+  Measurement Value (On Max)                      : 13083
+  Touch ON/OFF Difference (On)                    : 1509
+  << TS12 >>
+  Measurement Value (Off)                         : 11660
+  Measurement Value (On Min)                      : 11558
+  Measurement Value (On Max)                      : 13140
+  Touch ON/OFF Difference (On)                    : 1582
+  << TS01 >>
+  Measurement Value (Off)                         : 11721
+  Measurement Value (On Min)                      : 11608
+  Measurement Value (On Max)                      : 13422
+  Touch ON/OFF Difference (On)                    : 1814
+

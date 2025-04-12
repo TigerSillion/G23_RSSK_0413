@@ -1,0 +1,114 @@
+***** 2025/04/12 11:40:45 *****
+QE Version                                        :4.1.0.v20250123-0520
+Project Path                                      :C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412
+Configuration File                                :G23_RSSK_0412
+<< METHOD 0 >>
+[Slider 0]
+TS                                                : TS15, TS14, TS13, TS12, TS01,
+
+<<<< Tuning Type : Normal >>>>
+System Clock Frequency (MHz)                      :32.000
+PCLKB Frequency (MHz)                             :32.000
+CTSU Operating Frequency (MHz)                    :32.000
+Operating Voltage (V)                             :5.000
+
+---------- Phase1 ----------
+<< METHOD 0 >>
+[TS01]
+Measurement Value                                 : 3239
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 22.493055
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+[TS12]
+Measurement Value                                 : 3016
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 20.944445
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+[TS13]
+Measurement Value                                 : 2984
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 20.722221
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+[TS14]
+Measurement Value                                 : 2833
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.67361
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+[TS15]
+Measurement Value                                 : 2656
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 18.444445
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+
+---------- Phase2 ----------
+<< METHOD 0 >>
+[TS01]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 7
+CTSUSDPA                                          : 5
+CTSUSO                                            : 300
+
+[TS12]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 7
+CTSUSDPA                                          : 5
+CTSUSO                                            : 274
+
+[TS13]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 7
+CTSUSDPA                                          : 5
+CTSUSO                                            : 270
+
+[TS14]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 7
+CTSUSDPA                                          : 5
+CTSUSO                                            : 249
+
+[TS15]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 7
+CTSUSDPA                                          : 5
+CTSUSO                                            : 228
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Slider 0]
+Measurement Value (Off Min)                       : 11522
+Measurement Value (Off Max)                       : 11652
+Measurement Value (On Min)                        : 11473
+Measurement Value (On Max)                        : 13195
+Threshold                                         : 861
+  << TS15 >>
+  Measurement Value (Off)                         : 11525
+  Measurement Value (On Min)                      : 11485
+  Measurement Value (On Max)                      : 13094
+  Touch ON/OFF Difference (On)                    : 1609
+  << TS14 >>
+  Measurement Value (Off)                         : 11522
+  Measurement Value (On Min)                      : 11473
+  Measurement Value (On Max)                      : 12900
+  Touch ON/OFF Difference (On)                    : 1427
+  << TS13 >>
+  Measurement Value (Off)                         : 11579
+  Measurement Value (On Min)                      : 11560
+  Measurement Value (On Max)                      : 12950
+  Touch ON/OFF Difference (On)                    : 1390
+  << TS12 >>
+  Measurement Value (Off)                         : 11586
+  Measurement Value (On Min)                      : 11542
+  Measurement Value (On Max)                      : 12766
+  Touch ON/OFF Difference (On)                    : 1224
+  << TS01 >>
+  Measurement Value (Off)                         : 11652
+  Measurement Value (On Min)                      : 11616
+  Measurement Value (On Max)                      : 13195
+  Touch ON/OFF Difference (On)                    : 1579
+

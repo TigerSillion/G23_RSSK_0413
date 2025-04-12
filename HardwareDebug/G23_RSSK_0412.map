@@ -1,0 +1,93 @@
+Renesas Optimizing Linker (V3.07.00 )             12-Apr-2025 23:34:16
+
+*** Options ***
+
+-subcommand=LinkerG23_RSSK_0412.tmp
+-MAKEUD="C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\HardwareDebug/G23_RSSK_0412_l.ud" 
+-device="C:/Users/a5140073/.eclipse/com.renesas.platform_1297214930/DebugComp/RL78/RL78/Common/DR7F100GSN.DVF" 
+-list="G23_RSSK_0412.map" 
+-nooptimize 
+-entry=_start 
+-auto_section_layout 
+-security_id=00000000000000000000 
+-debug_monitor=BFE00-BFFFF 
+-user_opt_byte=EF3AE8 
+-ocdbg=84 
+-ocdtr 
+-input=".\src/smc_gen/r_bsp/board/generic_rl78_g23\stkinit.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\cstart.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_common_ccrl.obj"
+-input=".\qe_gen\qe_touch_config.obj"
+-input=".\qe_gen\qe_touch_sample.obj"
+-input=".\src/Debug_UART\debug_uart.obj"
+-input=".\src\G23_RSSK_0412.obj"
+-input=".\src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.obj"
+-input=".\src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.obj"
+-input=".\src/smc_gen/Config_TAU0_1\Config_TAU0_1.obj"
+-input=".\src/smc_gen/Config_TAU0_1\Config_TAU0_1_user.obj"
+-input=".\src/smc_gen/Config_UARTA1\Config_UARTA1.obj"
+-input=".\src/smc_gen/Config_UARTA1\Config_UARTA1_user.obj"
+-input=".\src/smc_gen/general\r_cg_itl_common.obj"
+-input=".\src/smc_gen/general\r_cg_itl_common_user.obj"
+-input=".\src/smc_gen/general\r_cg_systeminit.obj"
+-input=".\src/smc_gen/general\r_cg_tau_common.obj"
+-input=".\src/smc_gen/general\r_cg_uarta_common.obj"
+-input=".\src/smc_gen/r_bsp/board/generic_rl78_g23\hdwinit.obj"
+-input=".\src/smc_gen/r_bsp/board/generic_rl78_g23\r_bsp_init.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_common.obj"
+-input=".\src/smc_gen/r_bsp/mcu/rl78_g23\mcu_clocks.obj"
+-input=".\src/smc_gen/r_ctsu\r_ctsu.obj"
+-input=".\src/smc_gen/r_pincfg\r_ctsu_pinset.obj"
+-input=".\src/smc_gen/rm_touch\rm_touch.obj"
+-library="C:\Program Files (x86)\Renesas\RL78\1_15_0\lib\rl78em4s99.lib"
+-library="C:\Program Files (x86)\Renesas\RL78\1_15_0\lib\rl78em4r.lib"
+-library="C:\Program Files (x86)\Renesas\RL78\1_15_0\lib\malloc_n.lib"
+-output="G23_RSSK_0412.abs" 
+-debug 
+-nocompress 
+-memory=high 
+-rom=.data=.dataR,.sdata=.sdataR 
+-nomessage 
+-nologo
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+.vect
+                                  00000000  0000007f        80   0
+.constf
+                                  00000080  00000093        14   2
+.init_array
+                                  00000094  00000094         0   2
+.sdata
+                                  00000080  00000080         0   2
+.option_byte
+                                  000000c0  000000c3         4   1
+.security_id
+                                  000000c4  000000cd         a   1
+.monitor1
+                                  000000ce  000000d7         a   1
+.data
+                                  000000d8  00000109        32   2
+.text
+                                  0000010a  0000036a       261   1
+.RLIB
+                                  0000036b  00000e39       acf   1
+.const
+                                  00003000  0000340f       410   2
+.textf
+                                  00003410  000081ba      4dab   1
+.SLIB
+                                  000081bb  0000a418      225e   1
+.monitor2
+                                  000bfe00  000bffff       200   1
+.dataR
+                                  000f3f00  000f3f31        32   2
+.bss
+                                  000f4700  000f9da7      56a8   2
+.sbss
+                                  000ffe20  000ffe20         0   2
+.sdataR
+                                  000ffe20  000ffe20         0   2

@@ -1,0 +1,89 @@
+This is ccrl.exe help message.
+Copyright (C) 2014,2021 Renesas Electronics Corporation
+All rights reserved.
+
+------------------------------------------------------------------------------
+-V                     Print version and copyright.
+-help                  Print help message.
+-o file                Specify output file name.
+-obj_path[=path]       Output object files.
+-asm_path[=path]       Output assembly files.
+-prep_path[=path]      Output preprocessed files.
+-g                     Generate debugging information.
+-cpu=core              Specify cpu core.
+-use_mda=string        Specify using Mul/Div/Mac accelerator.
+-use_mach=string       Specify using MACHU/MACH.
+-lang=string           Specify source language.
+-P                     Execute preprocessing only.
+-S                     Output assembly files and quit.
+-c                     Output object files and quit.
+-D name[=def][,name[=def]]...
+                       Define preprocessor or assembler symbol 'name'.
+-U name[,name]...      Invalidate definition of symbol 'name' previously
+                       defined with -D.
+-I path[,path]...      Add extra folder to include file search path.
+-preinclude=file,[file]...
+                       Specify pre-include file.
+-preprocess=string[,string]
+                       Control output of preprocessor.
+-memory_model=string   Specify memory model.
+-far_rom               Set default rom data attribute to Far.
+-Olevel                Specify optimization level.
+-Oitem[=value][,item[=value]]...
+                       Enable/disable each optimization item.
+-goptimize             Generate link-time optimization information.
+-g_line                Enhance debugging information for optimization.
+-cref=path             Output static analysis information file.
+-pass_source           Embed C source line into assembly file as comment.
+-no_warning_num={num|num1-num2}[,{num|num1-num2}]...
+                       Disable warning message.
+-change_message=error[={num|num1-num2}[,{num|num1-num2}]...]
+                       Change the level of the compiler output message.
+-error_file=file       Output error messages to both stderr and file 'file'.
+-dbl_size=size         Specify 'double'-type size and 'long double'-type size.
+-signed_char           Assume char type as 'signed char' type.
+-signed_bitfield       Assume bitfields as signed type.
+-switch=string         Specify transformation method for switch statements.
+-volatile              Treat external variables as volatile.
+-merge_string          Merge string literals.
+-pack                  Set the alignment of structure members to one.
+-stuff[=type][,type]...
+                       Allocates variables to sections matching the alignment
+                       of the variables.
+-stack_protector[=num] Generate code for stack-smashing protection.
+-stack_protector_all[=num]
+                       Generate code for stack-smashing protection.
+-control_flow_integrity
+                       Generate code for the detection of illegal indirect
+                       function call.
+-insert_nop_with_label=file,line,label
+                       Insert a labeled NOP at the specified source
+                       program location.
+-strict_std            Enable strict C mode.
+-refs_without_declaration
+                       Output error messages for function calls without
+                       declaration.
+-large_variable        Set maximum variable size to 0xffff.
+-nest_comment          Enable nested '/* */'-type comments.
+-character_set=string  Specify encoding of multi-byte character sequence.
+-misra2004=string      Check C program based on MISRA-C:2004.
+-misra2012=string      Check C program based on MISRA-C:2012.
+-ignore_files_misra=file[,file]... 
+                       Specify files without MISRA-C check.
+-check_language_extension
+                       Validate MISRA-C rules restrained partially by
+                       the language extension.
+-misra_intermodule=file
+                       Specify the information file for the MISRA-C:2012 check
+                       across multiple C source files.
+-asmopt=arg            Specify assembler options.
+-lnkopt=arg            Specify linker options.
+-asmcmd=file           Pass command-file 'file' to assembler.
+-lnkcmd=file           Pass command-file 'file' to linker.
+-dev=file              Specify device file for assembler and linker.
+-convert_cc={ca78k0r|nc30|iar}
+                       Ease migration of programs written for other compilers.
+-unaligned_pointer_for_ca78k0r
+                       Access byte by byte to pointer indirect reference.
+------------------------------------------------------------------------------
+-subcommand=file       Read command-file 'file'.

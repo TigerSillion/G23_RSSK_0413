@@ -1,0 +1,21 @@
+-MM
+-MP
+-cpu=S3
+-dev="C:/Users/a5140073/.eclipse/com.renesas.platform_1297214930/DebugComp/RL78/RL78/Common/DR7F100GSN.DVF"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\r_bsp"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\Debug_UART"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\r_config"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\general"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\r_pincfg"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\rm_touch"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\r_ctsu"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\HardwareDebug\src\smc_gen\r_ctsu"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\Config_UARTA1"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\qe_gen"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013"
+-I "C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\src\smc_gen\Config_TAU0_1"
+-D QE_TOUCH_CONFIGURATION
+-character_set=utf8
+-lang=c99
+-g
