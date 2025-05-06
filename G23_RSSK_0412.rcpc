@@ -658,97 +658,6 @@
         </Category>
       </Category>
       <Category Name="trash">
-        <Category Name="2025-04-12-16-31-04">
-          <Category Name="src">
-            <Category Name="smc_gen">
-              <Category Name="Config_ITL000_ITL001_ITL012_ITL013">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c</Path>
-              </Category>
-              <Category Name="Config_UARTA1">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c</Path>
-              </Category>
-              <Category Name="general">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common_user.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_macrodriver.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_systeminit.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_uarta.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_uarta_common.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_uarta_common.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_userdefine.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\general\r_smc_entry.h</Path>
-              </Category>
-              <Category Name="r_bsp">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\platform.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\readme.txt</Path>
-                <Category Name="board">
-                  <Category Name="generic_rl78_g23">
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_ccrl.inc</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_iccrl.inc</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_llvm.inc</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm</Path>
-                  </Category>
-                </Category>
-                <Category Name="mcu">
-                  <Category Name="all">
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\cstart.asm</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\fsp_common_api.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_rl78_compiler.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_fsp_error.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_rtos.h</Path>
-                  </Category>
-                  <Category Name="rl78_g23">
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.h</Path>
-                    <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_info.h</Path>
-                    <Category Name="register_access">
-                      <Category Name="ccrl">
-                        <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\register_access\ccrl\iodefine.h</Path>
-                      </Category>
-                    </Category>
-                  </Category>
-                </Category>
-              </Category>
-              <Category Name="r_config">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_config\r_bsp_config.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_config\r_bsp_config.inc</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_config\r_ctsu_config.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_config\rm_touch_config.h</Path>
-              </Category>
-              <Category Name="r_ctsu">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_api.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm</Path>
-              </Category>
-              <Category Name="r_pincfg">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_pincfg\Pin.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_pincfg\r_ctsu_pinset.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\r_pincfg\r_ctsu_pinset.h</Path>
-              </Category>
-              <Category Name="rm_touch">
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\rm_touch\rm_touch.c</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\rm_touch\rm_touch.h</Path>
-                <Path>trash\2025-04-12-16-31-04\src\smc_gen\rm_touch\rm_touch_api.h</Path>
-              </Category>
-            </Category>
-          </Category>
-        </Category>
         <Category Name="2025-04-12-16-33-07">
           <Category Name="src">
             <Category Name="smc_gen">
@@ -1137,6 +1046,105 @@
             </Category>
           </Category>
         </Category>
+        <Category Name="2025-04-23-22-08-37">
+          <Category Name="src">
+            <Category Name="smc_gen">
+              <Category Name="Config_ITL000_ITL001_ITL012_ITL013">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c</Path>
+              </Category>
+              <Category Name="Config_TAU0_1">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1_user.c</Path>
+              </Category>
+              <Category Name="Config_UARTA1">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c</Path>
+              </Category>
+              <Category Name="general">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common_user.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_macrodriver.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_systeminit.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_tau.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_tau_common.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_tau_common.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_uarta.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_uarta_common.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_uarta_common.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_userdefine.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\general\r_smc_entry.h</Path>
+              </Category>
+              <Category Name="r_bsp">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\platform.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\readme.txt</Path>
+                <Category Name="board">
+                  <Category Name="generic_rl78_g23">
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_ccrl.inc</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_iccrl.inc</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_config_reference_llvm.inc</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm</Path>
+                  </Category>
+                </Category>
+                <Category Name="mcu">
+                  <Category Name="all">
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\cstart.asm</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\fsp_common_api.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_rl78_compiler.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_fsp_error.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_rtos.h</Path>
+                  </Category>
+                  <Category Name="rl78_g23">
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.h</Path>
+                    <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_info.h</Path>
+                    <Category Name="register_access">
+                      <Category Name="ccrl">
+                        <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\register_access\ccrl\iodefine.h</Path>
+                      </Category>
+                    </Category>
+                  </Category>
+                </Category>
+              </Category>
+              <Category Name="r_config">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_config\r_bsp_config.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_config\r_bsp_config.inc</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_config\r_ctsu_config.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_config\rm_touch_config.h</Path>
+              </Category>
+              <Category Name="r_ctsu">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_api.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm</Path>
+              </Category>
+              <Category Name="r_pincfg">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_pincfg\Pin.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_pincfg\r_ctsu_pinset.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\r_pincfg\r_ctsu_pinset.h</Path>
+              </Category>
+              <Category Name="rm_touch">
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\rm_touch\rm_touch.c</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\rm_touch\rm_touch.h</Path>
+                <Path>trash\2025-04-23-22-08-37\src\smc_gen\rm_touch\rm_touch_api.h</Path>
+              </Category>
+            </Category>
+          </Category>
+        </Category>
       </Category>
     </Files>
     <Device Category="com.renesas.cdt.managedbuild.renesas.ccrl.common.option.cpu.s3" Series="RL78">R7F100GSNxFB</Device>
@@ -1252,26 +1260,6 @@
           <Path>HardwareDebug\src/smc_gen/r_pincfg\r_ctsu_pinset.obj</Path>
           <Path>HardwareDebug\src/smc_gen/rm_touch\rm_touch.obj</Path>
         </LinkOrder>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_systeminit.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_uarta_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\cstart.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\rm_touch\rm_touch.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
@@ -1361,6 +1349,29 @@
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\rm_touch\rm_touch.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_systeminit.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_tau_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_uarta_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\cstart.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\rm_touch\rm_touch.c"/>
         <CommonOptions>
           <IncludePathForC>"${ProjDirPath}\src\smc_gen\r_bsp"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\src\Debug_UART"</IncludePathForC>
@@ -1505,26 +1516,6 @@
           <Path>Debug\src/smc_gen/r_pincfg\r_ctsu_pinset.obj</Path>
           <Path>Debug\src/smc_gen/rm_touch\rm_touch.obj</Path>
         </LinkOrder>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_itl_common_user.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_systeminit.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\general\r_cg_uarta_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\cstart.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
-        <NoTargetFile Target="trash\2025-04-12-16-31-04\src\smc_gen\rm_touch\rm_touch.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-33-07\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
@@ -1614,6 +1605,29 @@
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
         <NoTargetFile Target="trash\2025-04-12-16-47-23\src\smc_gen\rm_touch\rm_touch.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_TAU0_1\Config_TAU0_1_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\Config_UARTA1\Config_UARTA1_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_itl_common_user.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_systeminit.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_tau_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\general\r_cg_uarta_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\hdwinit.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\r_bsp_init.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\board\generic_rl78_g23\stkinit.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\cstart.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\all\r_bsp_common_ccrl.asm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_bsp\mcu\rl78_g23\mcu_clocks.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm.smsasm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_ctsu\r_ctsu_sms_asm_mutual.smsasm"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\r_pincfg\r_ctsu_pinset.c"/>
+        <NoTargetFile Target="trash\2025-04-23-22-08-37\src\smc_gen\rm_touch\rm_touch.c"/>
         <CommonOptions>
           <IncludePathForC>"${ProjDirPath}\src\smc_gen\r_bsp"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\src\smc_gen\r_config"</IncludePathForC>

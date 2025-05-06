@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+                "TOUCH_CFG_MONITOR_ENABLE=1"
+            ]
+        }
+    ],
+    "version": 4
+}

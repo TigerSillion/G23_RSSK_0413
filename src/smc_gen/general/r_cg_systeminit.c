@@ -28,6 +28,7 @@ Includes
 ***********************************************************************************************************************/
 #include "r_cg_macrodriver.h"
 #include "r_cg_userdefine.h"
+#include "Config_PORT.h"
 #include "r_cg_uarta_common.h"
 #include "r_cg_tau_common.h"
 #include "r_cg_itl_common.h"
@@ -59,6 +60,7 @@ void R_Systeminit(void)
     PRR0 = 0x00U;    /* release IICA, ADC, TAU and SAU module */
     PRR1 = 0x00U;    /* release DAC, SMS, COMP, ITL, REMC, CTSU module */
     /* Set peripheral settings */
+    R_Config_PORT_Create();
     R_UARTA_Create();
     R_ITL_Create();
     R_TAU0_Create();

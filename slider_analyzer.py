@@ -1,540 +1,196 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-滑条性能分析工具 - 实时串口数据可视化
-用于分析滑条的线性度和温度特性
-"""
-
-import argparse
 import re
-import sys
-import threading
 import time
-from collections import deque
-from datetime import datetime
-
-import matplotlib.pyplot as plt
+import sys
 import numpy as np
-import serial
-import serial.tools.list_ports
-from matplotlib.animation import FuncAnimation
 
+try:
+    import serial
+    from serial.tools import list_ports
+except ImportError:
+    print("Please install pyserial: pip install pyserial")
+    sys.exit(1)
 
-class Config:
-    """配置参数"""
-    MAX_POINTS = 500  # 显示的最大数据点数
-    UPDATE_INTERVAL = 200  # 更新间隔(毫秒)，增加以提高响应性
-    BAUD_RATE = 115200  # 串口波特率
-    COM_PORT = None  # 串口端口，如果为None则自动检测
-    USE_ENGLISH = True  # 使用英文界面，避免字体问题
-    RECENT_POINTS = 50  # 变化量图表显示的最近数据点数
-    TEST_MODE = False  # 测试模式，不需要实际的串口连接
+# Regular expression to extract the Pos value
+LINE_REGEX = re.compile(r'Pos=(\d+)')
 
-
-class Data:
-    """数据存储"""
-    def __init__(self):
-        # 位置数据
-        self.positions = deque(maxlen=Config.MAX_POINTS)
-        self.position_changes = deque(maxlen=Config.MAX_POINTS)
-        self.position_min = 999
-        self.position_max = -999
-        self.position_avg = 0
-        self.position_sum = 0
-        self.position_count = 0
-        self.current_position = 0
+def find_port(baudrate=115200, timeout=1, test_duration=5):
+    """
+    Scan available serial ports and return the first one that outputs lines matching LINE_REGEX.
+    
+    Args:
+        baudrate: Serial port baud rate
+        timeout: Serial port timeout in seconds
+        test_duration: Duration to test each port in seconds
         
-        # 温度数据
-        self.temperatures = deque(maxlen=Config.MAX_POINTS)
-        self.temperature_changes = deque(maxlen=Config.MAX_POINTS)
-        self.temp_min = 999
-        self.temp_max = -999
-        self.temp_avg = 0
-        self.temp_sum = 0
-        self.temp_count = 0
-        self.current_temp = 0
-        
-        # 时间戳
-        self.timestamps = deque(maxlen=Config.MAX_POINTS)
-        self.start_time = time.time()
-        
-        # 统计数据
-        self.position_avg_change = 0
-        self.temp_avg_change = 0
-        
-        # 锁
-        self.lock = threading.Lock()
-
-
-def detect_com_ports():
-    """检测可用的串口端口"""
-    ports = list(serial.tools.list_ports.comports())
+    Returns:
+        str: Port name if found, None if not found
+    """
+    print("Scanning for available serial ports...")
+    ports = list_ports.comports()
+    
     if not ports:
-        print("No serial devices detected. Please check your connection.")
-        sys.exit(1)
+        print("No serial ports found on the system!")
+        return None
         
-    if len(ports) == 1:
-        print(f"Automatically selected the only available port: {ports[0].device}")
-        return ports[0].device
-        
-    print("Available serial ports:")
-    for i, port in enumerate(ports):
-        print(f"{i+1}. {port.device} - {port.description}")
-        
-    while True:
+    print(f"Found {len(ports)} serial port(s):")
+    for port_info in ports:
+        print(f"  - {port_info.device}: {port_info.description}")
+    
+    for port_info in ports:
+        port = port_info.device
+        print(f"\nTesting port {port}...")
         try:
-            choice = int(input("Select a port to use (enter number): "))
-            if 1 <= choice <= len(ports):
-                return ports[choice-1].device
-        except ValueError:
-            pass
-        print("Invalid selection, please try again")
-
-
-def parse_position_data(line, data, debug=False):
-    """解析位置和温度数据行"""
-    pos_match = re.search(r'Pos=(\d+)', line)
-    temp_match = re.search(r'Temp=(\d+\.?\d*)', line)
-    
-    if pos_match and temp_match:
-        # 提取位置和温度值
-        position = int(pos_match.group(1))
-        temperature = float(temp_match.group(1))
-        
-        with data.lock:
-            # 更新位置数据
-            data.positions.append(position)
-            data.current_position = position
-            data.position_sum += position
-            data.position_count += 1
-            data.position_avg = data.position_sum / data.position_count
-            data.position_min = min(data.position_min, position)
-            data.position_max = max(data.position_max, position)
+            ser = serial.Serial(port, baudrate, timeout=timeout)
+            print(f"  Successfully opened port {port}")
+            print(f"  Waiting for data (timeout: {test_duration}s)...")
             
-            # 更新温度数据
-            data.temperatures.append(temperature)
-            data.current_temp = temperature
-            data.temp_sum += temperature
-            data.temp_count += 1
-            data.temp_avg = data.temp_sum / data.temp_count
-            data.temp_min = min(data.temp_min, temperature)
-            data.temp_max = max(data.temp_max, temperature)
-            
-            # 更新时间戳
-            data.timestamps.append(time.time() - data.start_time)
-        
-        if debug:
-            print(f"Parsed data: Position={position}, Temperature={temperature}")
-            
-        return True
-    return False
-
-
-def parse_delta_data(line, data, debug=False):
-    """解析变化量数据行"""
-    pos_match = re.search(r'Pos=(-?\d+)', line)
-    step_match = re.search(r'Step=(-?\d+\.?\d*)', line)
-    
-    if pos_match and step_match and "Delta:" in line:
-        pos_change = int(pos_match.group(1))
-        temp_change = float(step_match.group(1))
-        
-        with data.lock:
-            # 更新变化量数据
-            data.position_changes.append(pos_change)
-            data.temperature_changes.append(temp_change)
-            
-            # 计算平均变化量 (忽略0值，仅计算绝对值的平均)
-            non_zero_pos_changes = [abs(p) for p in data.position_changes if p != 0]
-            non_zero_temp_changes = [abs(t) for t in data.temperature_changes if t != 0]
-            
-            if non_zero_pos_changes:
-                data.position_avg_change = sum(non_zero_pos_changes) / len(non_zero_pos_changes)
-            
-            if non_zero_temp_changes:
-                data.temp_avg_change = sum(non_zero_temp_changes) / len(non_zero_temp_changes)
-        
-        if debug:
-            print(f"Parsed change: Position delta={pos_change}, Temperature step delta={temp_change}")
-            
-        return True
-    return False
-
-
-def calculate_changes(data):
-    """计算并添加变化量数据（如果没有接收到变化量数据）"""
-    with data.lock:
-        if len(data.positions) < 2:
-            return
-            
-        # 获取最新的位置和温度
-        current_pos = data.positions[-1]
-        current_temp = data.temperatures[-1]
-        
-        # 获取上一个位置和温度
-        prev_pos = data.positions[-2]
-        prev_temp = data.temperatures[-2]
-        
-        # 计算变化量
-        pos_change = current_pos - prev_pos
-        temp_change = current_temp - prev_temp
-        
-        # 只有当变化超过阈值时才记录
-        if abs(pos_change) > 0 or abs(temp_change) > 0.05:
-            data.position_changes.append(pos_change)
-            data.temperature_changes.append(temp_change)
-            
-            # 更新平均变化量
-            non_zero_pos_changes = [abs(p) for p in data.position_changes if p != 0]
-            non_zero_temp_changes = [abs(t) for t in data.temperature_changes if abs(t) > 0.05]
-            
-            if non_zero_pos_changes:
-                data.position_avg_change = sum(non_zero_pos_changes) / len(non_zero_pos_changes)
-            
-            if non_zero_temp_changes:
-                data.temp_avg_change = sum(non_zero_temp_changes) / len(non_zero_temp_changes)
-
-
-def serial_reader(ser, data, stop_event, debug=False):
-    """串口读取线程"""
-    buffer = ""
-    last_calc_time = time.time()
-    
-    while not stop_event.is_set():
-        try:
-            if ser.in_waiting > 0:
-                incoming = ser.read(ser.in_waiting).decode('utf-8', errors='ignore')
-                buffer += incoming
-                
-                # 处理完整行
-                lines = buffer.split('\n')
-                buffer = lines.pop()  # 保留最后一个不完整的行
-                
-                data_updated = False
-                for line in lines:
-                    line = line.strip()
-                    if not line:
-                        continue
-                        
-                    if debug:
-                        print(f"收到数据: {line}")
+            start = time.time()
+            while time.time() - start < test_duration:
+                line = ser.readline().decode(errors='ignore')
+                if line.strip():
+                    print(f"  Received: {line.strip()}")
+                if LINE_REGEX.search(line):
+                    print(f"  Found matching data on port {port}!")
+                    ser.close()
+                    return port
                     
-                    # 尝试解析位置和温度数据
-                    if parse_position_data(line, data, debug):
-                        data_updated = True
-                    else:
-                        # 如果不是位置数据，尝试解析变化量数据
-                        if parse_delta_data(line, data, debug):
-                            data_updated = True
-                
-                # 如果接收到新的位置和温度数据，但没有变化量数据，则自动计算变化量
-                current_time = time.time()
-                if data_updated and (current_time - last_calc_time) > 0.5:
-                    calculate_changes(data)
-                    last_calc_time = current_time
-            else:
-                time.sleep(0.01)  # 避免CPU占用过高
-                
-        except Exception as e:
-            print(f"串口读取错误: {e}")
-            time.sleep(0.5)
-
-
-def init_plot():
-    """初始化图形界面"""
-    plt.style.use('dark_background')
-    fig = plt.figure(figsize=(12, 8))  # 增加图表宽度
-    fig.canvas.manager.set_window_title("Slider Performance Analyzer")
-    
-    # 创建子图并调整间距
-    gs = plt.GridSpec(4, 1, height_ratios=[1, 1, 0.8, 0.8], hspace=0.4)
-    pos_ax = fig.add_subplot(gs[0])
-    temp_ax = fig.add_subplot(gs[1])
-    pos_delta_ax = fig.add_subplot(gs[2])
-    temp_delta_ax = fig.add_subplot(gs[3])
-    
-    # 配置位置图
-    pos_ax.set_ylabel("Position (0-100)")
-    pos_ax.set_ylim(0, 100)
-    pos_ax.grid(True, linestyle='--', alpha=0.7)
-    pos_ax.set_title("Slider Position Waveform")
-    pos_line, = pos_ax.plot([], [], 'g-', linewidth=1.5)
-    
-    # 配置温度图
-    temp_ax.set_ylabel("Temperature (°C)")
-    temp_ax.set_ylim(16, 31)
-    temp_ax.grid(True, linestyle='--', alpha=0.7)
-    temp_ax.set_title("Temperature Waveform")
-    temp_line, = temp_ax.plot([], [], 'r-', linewidth=1.5)
-    
-    # 配置位置变化量图
-    pos_delta_ax.set_ylabel("Position Change")
-    pos_delta_ax.set_ylim(-10, 10)
-    pos_delta_ax.grid(True, linestyle='--', alpha=0.7)
-    pos_delta_ax.set_title("Position Step Change")
-    pos_delta_bars = pos_delta_ax.bar([], [], width=0.8, color='cyan')
-    
-    # 配置温度变化量图
-    temp_delta_ax.set_ylabel("Temperature Change")
-    temp_delta_ax.set_xlabel("Sample Points")
-    temp_delta_ax.set_ylim(-1, 1)
-    temp_delta_ax.grid(True, linestyle='--', alpha=0.7)
-    temp_delta_ax.set_title("Temperature Step Change")
-    temp_delta_bars = temp_delta_ax.bar([], [], width=0.8, color='orange')
-    
-    # 添加文本区域显示统计数据
-    stats_text = plt.figtext(0.02, 0.01, "", fontsize=9)
-    
-    # 调整布局
-    plt.tight_layout(rect=[0, 0.03, 1, 0.98])
-    
-    return (fig, pos_line, temp_line, pos_delta_bars, temp_delta_bars, 
-            pos_ax, temp_ax, pos_delta_ax, temp_delta_ax, stats_text)
-
-
-def update_plot(frame, data, plot_elements):
-    """更新图形"""
-    pos_line, temp_line, pos_delta_bars, temp_delta_bars = plot_elements[:4]
-    pos_ax, temp_ax, pos_delta_ax, temp_delta_ax, stats_text = plot_elements[4:]
-    
-    with data.lock:
-        positions = list(data.positions)
-        temperatures = list(data.temperatures)
-        position_changes = list(data.position_changes)
-        temperature_changes = list(data.temperature_changes)
-    
-    if positions:
-        # 更新位置图
-        x = range(len(positions))
-        pos_line.set_data(x, positions)
-        pos_ax.set_xlim(max(0, len(positions)-Config.MAX_POINTS), len(positions))
-        
-        # 更新温度图
-        temp_line.set_data(x, temperatures)
-        temp_ax.set_xlim(max(0, len(temperatures)-Config.MAX_POINTS), len(temperatures))
-        if temperatures:
-            temp_min = min(temperatures)
-            temp_max = max(temperatures)
-            if temp_max > temp_min:
-                temp_ax.set_ylim(max(16, temp_min - 0.5), min(31, temp_max + 0.5))
-    
-    # 更新位置变化量图
-    if position_changes:
-        # 仅显示最近的数据点
-        recent_pos_changes = position_changes[-Config.RECENT_POINTS:]
-        x = list(range(len(recent_pos_changes)))  # 显式转换为列表
-        
-        # 完全清除旧数据并重绘
-        pos_delta_ax.clear()
-        pos_delta_ax.set_title("Position Step Change")
-        pos_delta_ax.set_ylabel("Position Change")
-        pos_delta_ax.set_ylim(-10, 10)
-        pos_delta_ax.grid(True, linestyle='--', alpha=0.7)
-        
-        # 使用x刻度标签而不是设置xlim
-        colors = ['cyan' if val >= 0 else 'blue' for val in recent_pos_changes]
-        pos_delta_ax.bar(x, recent_pos_changes, width=0.8, color=colors)
-        pos_delta_ax.set_xlim(-1, len(recent_pos_changes))
-        
-        # 强制使用整数刻度标签
-        pos_delta_ax.set_xticks(x[::max(1, len(x)//5)])  # 设置适当数量的刻度
-    
-    # 更新温度变化量图
-    if temperature_changes:
-        # 仅显示最近的数据点
-        recent_temp_changes = temperature_changes[-Config.RECENT_POINTS:]
-        x = list(range(len(recent_temp_changes)))  # 显式转换为列表
-        
-        # 完全清除旧数据并重绘
-        temp_delta_ax.clear()
-        temp_delta_ax.set_title("Temperature Step Change")
-        temp_delta_ax.set_ylabel("Temperature Change")
-        temp_delta_ax.set_xlabel("Sample Points")
-        temp_delta_ax.set_ylim(-1, 1)
-        temp_delta_ax.grid(True, linestyle='--', alpha=0.7)
-        
-        # 使用x刻度标签而不是设置xlim
-        colors = ['orange' if val >= 0 else 'yellow' for val in recent_temp_changes]
-        temp_delta_ax.bar(x, recent_temp_changes, width=0.8, color=colors)
-        temp_delta_ax.set_xlim(-1, len(recent_temp_changes))
-        
-        # 强制使用整数刻度标签
-        temp_delta_ax.set_xticks(x[::max(1, len(x)//5)])  # 设置适当数量的刻度
-    
-    # 更新统计信息
-    with data.lock:
-        stats = (
-            f"Position Stats: Min={data.position_min:.1f} Max={data.position_max:.1f} "
-            f"Avg={data.position_avg:.1f} | "
-            f"Temp Stats: Min={data.temp_min:.1f}°C Max={data.temp_max:.1f}°C "
-            f"Avg={data.temp_avg:.1f}°C\n"
-            f"Linearity Analysis: Pos Avg Step={data.position_avg_change:.2f} "
-            f"Temp Avg Step={data.temp_avg_change:.2f} | "
-            f"Current: Pos={data.current_position} Temp={data.current_temp:.1f}°C"
-        )
-        stats_text.set_text(stats)
-    
-    # 对于非blitting模式，不需要返回artists列表
+            print(f"  No matching data found on port {port}")
+            ser.close()
+        except (serial.SerialException, OSError) as e:
+            print(f"  Error testing port {port}: {str(e)}")
+            continue
+            
+    print("\nNo valid serial port found that matches the expected data format.")
     return None
 
+def analyze_sweep(positions):
+    """
+    Analyze a single sweep of positions.
+    Returns slope, intercept, R^2, maximum deviation, and a comprehensive score.
+    """
+    n = len(positions)
+    x = np.arange(n)
+    y = np.array(positions)
+    a, b = np.polyfit(x, y, 1)
+    y_fit = a * x + b
+    
+    # Calculate R²
+    ss_res = np.sum((y - y_fit) ** 2)
+    ss_tot = np.sum((y - np.mean(y)) ** 2)
+    r2 = 1 - ss_res / ss_tot if ss_tot != 0 else float('nan')
+    
+    # Calculate maximum deviation
+    max_dev = np.max(np.abs(y - y_fit))
+    
+    # Calculate comprehensive score (0-100)
+    r2_score = min(60, r2 * 60) if not np.isnan(r2) else 0
+    max_dev_score = max(0, 40 * (1 - max_dev / (np.max(y) - np.min(y))))
+    total_score = r2_score + max_dev_score
+    
+    # Grade the performance
+    if total_score >= 90:
+        grade = "A (优秀)"
+    elif total_score >= 80:
+        grade = "B (良好)"
+    elif total_score >= 70:
+        grade = "C (一般)"
+    elif total_score >= 60:
+        grade = "D (及格)"
+    else:
+        grade = "F (不及格)"
+    
+    return a, b, r2, max_dev, total_score, grade
 
-def generate_test_data(data, stop_event):
-    """生成测试数据"""
-    import math
-    import random
-    
-    sample_count = 0
-    test_start_time = time.time()
-    
-    while not stop_event.is_set():
-        # 生成一个模拟的正弦波形为位置
-        t = (time.time() - test_start_time) * 0.5
-        position = int(50 + 50 * math.sin(t))
+class SliderAnalyzer:
+    def __init__(self):
+        self.up_sweeps = []
+        self.down_sweeps = []
+        self.total_sweeps = 0
         
-        # 温度与位置相关，但有一定的随机性和相位差
-        temperature = 22 + 5 * math.sin(t - 0.5) + random.uniform(-0.2, 0.2)
+    def add_sweep(self, direction, score):
+        if direction == 'up':
+            self.up_sweeps.append(score)
+        else:
+            self.down_sweeps.append(score)
+        self.total_sweeps += 1
         
-        with data.lock:
-            # 更新位置数据
-            if len(data.positions) > 0:
-                # 计算变化量
-                prev_pos = data.positions[-1]
-                prev_temp = data.temperatures[-1]
-                pos_change = position - prev_pos
-                temp_change = temperature - prev_temp
+    def get_summary(self):
+        if self.total_sweeps == 0:
+            return "暂无扫描数据"
+            
+        try:
+            up_avg = np.mean(self.up_sweeps) if self.up_sweeps else 0
+            down_avg = np.mean(self.down_sweeps) if self.down_sweeps else 0
+            total_avg = (up_avg * len(self.up_sweeps) + down_avg * len(self.down_sweeps)) / self.total_sweeps if self.total_sweeps > 0 else 0
+            
+            def get_grade(score):
+                if score >= 90: return "A (优秀)"
+                if score >= 80: return "B (良好)"
+                if score >= 70: return "C (一般)"
+                if score >= 60: return "D (及格)"
+                return "F (不及格)"
                 
-                # 添加变化量（只有当变化超过阈值时）
-                if abs(pos_change) > 0 or abs(temp_change) > 0.1:
-                    data.position_changes.append(pos_change)
-                    data.temperature_changes.append(temp_change)
-                    
-                    # 更新平均变化量
-                    non_zero_pos_changes = [abs(p) for p in data.position_changes if p != 0]
-                    non_zero_temp_changes = [abs(t) for t in data.temperature_changes if abs(t) > 0.05]
-                    
-                    if non_zero_pos_changes:
-                        data.position_avg_change = sum(non_zero_pos_changes) / len(non_zero_pos_changes)
-                    
-                    if non_zero_temp_changes:
-                        data.temp_avg_change = sum(non_zero_temp_changes) / len(non_zero_temp_changes)
-            
-            # 更新位置和温度数据
-            data.positions.append(position)
-            data.temperatures.append(temperature)
-            data.current_position = position
-            data.current_temp = temperature
-            
-            # 更新统计数据
-            sample_count += 1
-            data.position_sum += position
-            data.position_count += 1
-            data.position_avg = data.position_sum / data.position_count
-            data.position_min = min(data.position_min, position)
-            data.position_max = max(data.position_max, position)
-            
-            data.temp_sum += temperature
-            data.temp_count += 1
-            data.temp_avg = data.temp_sum / data.temp_count
-            data.temp_min = min(data.temp_min, temperature)
-            data.temp_max = max(data.temp_max, temperature)
-            
-            # 更新时间戳
-            data.timestamps.append(time.time() - data.start_time)
-            
-        # 休眠一段时间以模拟实际的数据采样率
-        time.sleep(0.1)
+            return f"""
+综合统计报告:
+----------------
+总扫描次数: {self.total_sweeps}
+向上扫描次数: {len(self.up_sweeps)}
+向下扫描次数: {len(self.down_sweeps)}
 
+向上扫描平均分: {up_avg:.1f}/100 ({get_grade(up_avg)})
+向下扫描平均分: {down_avg:.1f}/100 ({get_grade(down_avg)})
+综合平均分: {total_avg:.1f}/100 ({get_grade(total_avg)})
+----------------
+"""
+        except Exception as e:
+            return f"生成统计报告时出错: {str(e)}"
 
-def main():
-    """主函数"""
-    parser = argparse.ArgumentParser(description="Slider Performance Analyzer - Real-time Serial Data Visualization")
-    parser.add_argument("-p", "--port", help="Serial port (e.g. COM3 or /dev/ttyUSB0)")
-    parser.add_argument("-b", "--baud", type=int, default=Config.BAUD_RATE, help="Baud rate")
-    parser.add_argument("-d", "--debug", action="store_true", help="Enable debug mode")
-    parser.add_argument("-t", "--test", action="store_true", help="Test mode (no serial connection required)")
-    args = parser.parse_args()
-    
-    # 设置测试模式
-    Config.TEST_MODE = args.test
-    
-    # 设置串口端口
-    port = args.port if args.port else Config.COM_PORT
-    if not port and not Config.TEST_MODE:
-        port = detect_com_ports()
-    
-    # 初始化数据存储
-    data = Data()
-    
-    # 初始化停止事件
-    stop_event = threading.Event()
+def main(baudrate=115200):
+    port = find_port(baudrate)
+    if not port:
+        print("No valid serial port found.")
+        return
+
+    print(f"Using port: {port} at {baudrate} baud.")
+    ser = serial.Serial(port, baudrate, timeout=1)
+    positions = []
+    direction = None  # 'up' or 'down'
+    analyzer = SliderAnalyzer()
     
     try:
-        # 初始化数据源线程
-        if Config.TEST_MODE:
-            print("Running in test mode - generating synthetic data")
-            reader_thread = threading.Thread(
-                target=generate_test_data,
-                args=(data, stop_event),
-                daemon=True
-            )
-            reader_thread.start()
-        else:
-            # 打开串口
-            ser = serial.Serial(port, args.baud, timeout=1)
-            print(f"Successfully connected to {port} (baud rate: {args.baud})")
-            
-            # 启动串口读取线程
-            reader_thread = threading.Thread(
-                target=serial_reader,
-                args=(ser, data, stop_event, args.debug),
-                daemon=True
-            )
-            reader_thread.start()
-        
-        # 初始化图形界面
-        plot_elements = init_plot()
-        fig = plot_elements[0]
-        
-        # 配置动画
-        ani = FuncAnimation(
-            fig, update_plot, 
-            fargs=(data, plot_elements[1:]), 
-            interval=Config.UPDATE_INTERVAL,
-            blit=False,  # 禁用blitting以避免NoneType错误
-            cache_frame_data=False
-        )
-        
-        # 启用交互模式并减少GUI刷新频率
-        plt.ion()
-        plt.show()  # 确保图形显示窗口
-        
-        # 主循环
-        try:
-            while True:
-                plt.pause(0.2)  # 增加暂停时间，减少CPU占用
-        except KeyboardInterrupt:
-            print("\nProgram stopped by user")
-            
-    except serial.SerialException as e:
-        print(f"Serial error: {e}")
-        print("Please check your serial connection")
-    except Exception as e:
-        print(f"Error: {e}")
-        import traceback
-        traceback.print_exc()  # 打印完整的错误信息
+        while True:
+            line = ser.readline().decode(errors='ignore')
+            m = LINE_REGEX.search(line)
+            if not m:
+                continue
+            pos = int(m.group(1))
+            if not positions:
+                positions.append(pos)
+                continue
+            last = positions[-1]
+            new_dir = 'up' if pos > last else 'down' if pos < last else direction
+            if direction and new_dir != direction:
+                a, b, r2, max_dev, score, grade = analyze_sweep(positions)
+                print(f"\nSweep {direction.upper()} 分析结果:")
+                print(f"斜率: {a:.2f}")
+                print(f"截距: {b:.2f}")
+                print(f"R²值: {r2:.4f}")
+                print(f"最大偏差: {max_dev:.2f}")
+                print(f"综合评分: {score:.1f}/100")
+                print(f"等级: {grade}")
+                
+                analyzer.add_sweep(direction, score)
+                print(analyzer.get_summary())
+                
+                positions = [last]
+            positions.append(pos)
+            direction = new_dir
+    except KeyboardInterrupt:
+        print("\n分析结束。")
+        print(analyzer.get_summary())
     finally:
-        # 停止串口读取线程
-        stop_event.set()
-        try:
-            if not Config.TEST_MODE and 'ser' in locals() and ser.is_open:
-                ser.close()
-                print("Serial port closed")
-        except:
-            pass
-        plt.close('all')
+        ser.close()
 
+if __name__ == '__main__':
+    main()
 
-if __name__ == "__main__":
-    print("Slider Performance Analyzer - Real-time Serial Data Visualization")
-    print("Press Ctrl+C to stop the program")
-    main() 

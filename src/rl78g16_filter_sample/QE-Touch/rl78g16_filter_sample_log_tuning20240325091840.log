@@ -1,0 +1,146 @@
+***** 2024/03/25 09:18:40 *****
+QE Version                                        :3.3.0.v20230526-0659
+Project Path                                      :C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample
+Configuration File                                :rl78g16_filter_sample
+<< METHOD 0 >>
+[Button(self) 0]
+TS                                                : TS08,
+<< METHOD 1 >>
+[Button(self) 0]
+TS                                                : TS08,
+<< METHOD 2 >>
+[Button(self) 0]
+TS                                                : TS08,
+<< METHOD 3 >>
+[Button(self) 0]
+TS                                                : TS08,
+<< METHOD 4 >>
+[Button(self) 0]
+TS                                                : TS08,
+
+<<<< Tuning Type : Normal >>>>
+System Clock Frequency (MHz)                      :16.000
+PCLKB Frequency (MHz)                             :16.000
+CTSU Operating Frequency (MHz)                    :16.000
+Operating Voltage (V)                             :2.700
+
+---------- Phase1 ----------
+<< METHOD 0 >>
+[TS08]
+Count Value                                       : 7763
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.314657
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+
+<< METHOD 1 >>
+[TS08]
+Count Value                                       : 7753
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.289778
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+
+<< METHOD 2 >>
+[TS08]
+Count Value                                       : 7720
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.207672
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+
+<< METHOD 3 >>
+[TS08]
+Count Value                                       : 7726
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.222599
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+
+<< METHOD 4 >>
+[TS08]
+Count Value                                       : 7759
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 19.304705
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+
+
+---------- Phase2 ----------
+<< METHOD 0 >>
+[TS08]
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+CTSUSNUM                                          : 1
+CTSUSSDIV                                         : 3
+CTSUSDPA                                          : 7
+CTSUSO                                            : 94
+
+<< METHOD 1 >>
+[TS08]
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+CTSUSNUM                                          : 1
+CTSUSSDIV                                         : 3
+CTSUSDPA                                          : 7
+CTSUSO                                            : 94
+
+<< METHOD 2 >>
+[TS08]
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+CTSUSNUM                                          : 1
+CTSUSSDIV                                         : 3
+CTSUSDPA                                          : 7
+CTSUSO                                            : 94
+
+<< METHOD 3 >>
+[TS08]
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+CTSUSNUM                                          : 1
+CTSUSSDIV                                         : 3
+CTSUSDPA                                          : 7
+CTSUSO                                            : 94
+
+<< METHOD 4 >>
+[TS08]
+Sensor Drive Pulse Frequency (MHz)                : 1.0
+CTSUSNUM                                          : 1
+CTSUSSDIV                                         : 3
+CTSUSDPA                                          : 7
+CTSUSO                                            : 94
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS08 >>
+  Count Value (Off)                               : 15352
+  Count Value (On)                                : 16882
+  Threshold                                       : 918
+  Hysteresis                                      : 45
+
+<< METHOD 1 >>
+[Button(self) 0]
+  << TS08 >>
+  Count Value (Off)                               : 15325
+  Count Value (On)                                : 17001
+  Threshold                                       : 1005
+  Hysteresis                                      : 50
+
+<< METHOD 2 >>
+[Button(self) 0]
+  << TS08 >>
+  Count Value (Off)                               : 15311
+  Count Value (On)                                : 16849
+  Threshold                                       : 922
+  Hysteresis                                      : 46
+
+<< METHOD 3 >>
+[Button(self) 0]
+  << TS08 >>
+  Count Value (Off)                               : 15348
+  Count Value (On)                                : 16999
+  Threshold                                       : 990
+  Hysteresis                                      : 49
+
+<< METHOD 4 >>
+[Button(self) 0]
+  << TS08 >>
+  Count Value (Off)                               : 15310
+  Count Value (On)                                : 16942
+  Threshold                                       : 979
+  Hysteresis                                      : 48
+

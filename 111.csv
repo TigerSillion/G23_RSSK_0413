@@ -1,0 +1,7 @@
+"Method","Kind","Name","Touch Sensor","Measurement Value","Primary Counter","Secondary Counter","Sensor Drive Pulse Frequency[MHz]","Baseline","Threshold","Touch ON/OFF difference","Hysteresis","Resolution","Status","Final Status"
+"config01","Slider","Slider00","TS15, TS14, TS13, TS12, TS01","-","-","-","-","-","909","-","-","100","65535","-"
+"config01","Slider TS","(Slider00)","TS15","11480","-","-","-","-","-","-","-","-","-","-"
+"config01","Slider TS","(Slider00)","TS14","11483","-","-","-","-","-","-","-","-","-","-"
+"config01","Slider TS","(Slider00)","TS13","11465","-","-","-","-","-","-","-","-","-","-"
+"config01","Slider TS","(Slider00)","TS12","11489","-","-","-","-","-","-","-","-","-","-"
+"config01","Slider TS","(Slider00)","TS01","11712","-","-","-","-","-","-","-","-","-","-"

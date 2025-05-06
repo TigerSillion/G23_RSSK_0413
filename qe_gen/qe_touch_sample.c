@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>  // 为了使用abs函数
+#include "slider_jump_app.h"
 
 /* 全局毫秒计数器的外部声明 */
 extern volatile uint32_t g_msCounter;
@@ -57,7 +58,8 @@ void qe_touch_main(void)
 
         while (0 == g_qe_touch_flag) {}
         g_qe_touch_flag = 0;
-
+        err = RM_TOUCH_DataGet (g_qe_touch_instance_config01.p_ctrl, NULL, &slider_position, NULL);
+#if 0
         err = RM_TOUCH_DataGet (g_qe_touch_instance_config01.p_ctrl, NULL, slider_position, NULL);
         if (FSP_SUCCESS == err)
         {
@@ -142,7 +144,7 @@ void qe_touch_main(void)
             
             /* TODO: Add your own code here. */
         }
-        
+ #endif       
         // 处理调试消息
         Debug_Process();
         

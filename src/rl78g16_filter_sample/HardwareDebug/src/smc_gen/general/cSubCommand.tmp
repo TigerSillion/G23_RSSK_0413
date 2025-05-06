@@ -1,0 +1,21 @@
+-cpu=S2
+-use_mda=not_use
+-c
+-dev="C:/Users/rikuno/.eclipse/com.renesas.platform_1368328666/DebugComp/RL78/RL78/Common/DR5F121BC.DVF"
+-MAKEUD="C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\HardwareDebug\src\smc_gen\general"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\general"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\r_pincfg"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\r_bsp"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\r_config"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\HardwareDebug\src\smc_gen\r_ctsu"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\r_ctsu"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\Config_TAU0_0"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\rm_touch"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\qe_gen"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\src\smc_gen\Config_UART1"
+-I "C:\Users\rikuno\e2_studio\workspace_filter_RL\rl78g16_filter_sample\filter_sample"
+-D QE_TOUCH_CONFIGURATION
+-character_set=utf8
+-lang=c99
+-g

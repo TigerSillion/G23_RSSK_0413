@@ -37,6 +37,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_UARTA1}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.1179892380" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
 							</tool>
@@ -68,6 +69,8 @@
 								<option id="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.characterSet.1522674081" name="Character encoding (-character_set)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.characterSet" value="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.characterSet.utf8" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.I.858749475" name="Include file directories (-I)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.I" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_bsp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Filter/Jump_filter}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Filter}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Debug_UART}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/general}&quot;"/>
@@ -80,6 +83,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/qe_gen}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<option id="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.langFileC.1826630553" name="Language standard of C language (-lang)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.langFileC" value="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.langFileC.c99" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.D.536982139" name="Macro definition (-D)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.D" valueType="definedSymbols">
@@ -109,6 +113,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_UARTA1}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<inputType id="Base.Assembler.ccrl.inputType.669688230" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
 							</tool>
@@ -135,9 +140,16 @@
 									<listOptionValue builtIn="false" value="&quot;.\qe_gen\qe_touch_sample.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/Debug_UART\debug_uart.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src\G23_RSSK_0412.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013\Config_ITL000_ITL001_ITL012_ITL013_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_TAU0_1\Config_TAU0_1.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_TAU0_1\Config_TAU0_1_user.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_UARTA1\Config_UARTA1.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/Config_UARTA1\Config_UARTA1_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_itl_common.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_itl_common_user.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_systeminit.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_tau_common.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_uarta_common.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/board/generic_rl78_g23\hdwinit.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/board/generic_rl78_g23\r_bsp_init.obj&quot;"/>
@@ -165,12 +177,96 @@
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.userAfter.793086055" name="User-defined options (added after all specified options)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.userAfter" valueType="stringList">
 									<listOptionValue builtIn="false" value=""/>
 								</option>
+								<option id="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.outputHexFile.1780818634" name="Output hex file" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.outputHexFile" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.crc.1461846332" name="Outputs the calculation result of CRC (-crc)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.crc" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.verbose.538212077" name="Displays the result of CRC calculation and output address (-VERBOSE=CRC)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.converter.option.verbose" value="true" valueType="boolean"/>
 							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.configuration.46632186.1853941583" name="/" resourcePath="src/rl78g16_filter_sample">
+						<toolChain id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain.1643252733" name="Renesas CCRL Toolchain" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE" id="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform" isAbstract="false" name="targetPlatform" osList="win32" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.1408705844" name="SMS Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.1646576608">
+								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.536867896" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1553538943" name="DSP Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1854742112"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.908958475" name="FAA Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.1158224550"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.1507468018" name="Common" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.853459340"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.488458919" name="Compiler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.611440771">
+								<inputType id="Base.Compiler.ccrl.C.inputType.1984547544" name="Compiler InputType" superClass="Base.Compiler.ccrl.C.inputType"/>
+								<inputType id="Base.Compiler.ccrl.Cpp.inputType.1725465726" name="Compiler Input CPP" superClass="Base.Compiler.ccrl.Cpp.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.548739764" name="Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.1404190866">
+								<inputType id="Base.Assembler.ccrl.inputType.1778181618" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.353498937" name="Linker" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.1048562876"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.1300537366" name="Converter" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.657161654"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.configuration.46632186.750427422" name="/" resourcePath="src/Filter">
+						<toolChain id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain.1222659848" name="Renesas CCRL Toolchain" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE" id="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform" isAbstract="false" name="targetPlatform" osList="win32" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.2033543948" name="SMS Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.1646576608">
+								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.933518167" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1757469051" name="DSP Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1854742112"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.872423081" name="FAA Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.1158224550"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.912916123" name="Common" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.853459340"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.1032208829" name="Compiler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.611440771">
+								<inputType id="Base.Compiler.ccrl.C.inputType.317730750" name="Compiler InputType" superClass="Base.Compiler.ccrl.C.inputType"/>
+								<inputType id="Base.Compiler.ccrl.Cpp.inputType.1764440496" name="Compiler Input CPP" superClass="Base.Compiler.ccrl.Cpp.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.148574604" name="Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.1404190866">
+								<inputType id="Base.Assembler.ccrl.inputType.1206599157" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.72240975" name="Linker" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.1048562876"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.1060263273" name="Converter" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.657161654"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.configuration.46632186.98802848" name="/" resourcePath="src/Filter/Jump_filter">
+						<toolChain id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain.1945544835" name="Renesas CCRL Toolchain" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE" id="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform" isAbstract="false" name="targetPlatform" osList="win32" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.270624425" name="SMS Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.2033543948">
+								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.345864551" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1563671372" name="DSP Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1757469051"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.1237035973" name="FAA Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.872423081"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.1670530889" name="Common" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.912916123"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.981450722" name="Compiler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.1032208829">
+								<inputType id="Base.Compiler.ccrl.C.inputType.1849252863" name="Compiler InputType" superClass="Base.Compiler.ccrl.C.inputType"/>
+								<inputType id="Base.Compiler.ccrl.Cpp.inputType.1397728726" name="Compiler Input CPP" superClass="Base.Compiler.ccrl.Cpp.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.1678856393" name="Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.148574604">
+								<inputType id="Base.Assembler.ccrl.inputType.1627896627" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.367830176" name="Linker" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.72240975"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.1610579775" name="Converter" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.1060263273"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.configuration.46632186.1490642901" name="/" resourcePath="src/rm_touch_patch">
+						<toolChain id="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain.1871103083" name="Renesas CCRL Toolchain" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.hardwaredebug.toolChain" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE" id="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform" isAbstract="false" name="targetPlatform" osList="win32" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.targetPlatform"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.1287956635" name="SMS Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.smsasm.1646576608">
+								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.1250415196" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.790504133" name="DSP Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.dsp.1854742112"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.1394051877" name="FAA Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.faa.1158224550"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.655770943" name="Common" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.common.853459340"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.659009388" name="Compiler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.compiler.611440771">
+								<inputType id="Base.Compiler.ccrl.C.inputType.21149196" name="Compiler InputType" superClass="Base.Compiler.ccrl.C.inputType"/>
+								<inputType id="Base.Compiler.ccrl.Cpp.inputType.1673244128" name="Compiler Input CPP" superClass="Base.Compiler.ccrl.Cpp.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.246446081" name="Assembler" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.assembler.1404190866">
+								<inputType id="Base.Assembler.ccrl.inputType.497266365" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
+							</tool>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.877525613" name="Linker" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.linker.1048562876"/>
+							<tool id="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.945661204" name="Converter" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.base.converter.657161654"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="qe_gen"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+						<entry excluding="rl78g16_filter_sample|Filter|rm_touch_patch" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/Filter/Jump_filter"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -212,6 +308,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_UARTA1}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<inputType id="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType.166361701" name="SMS Assembler Input" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.smsasm.inputType"/>
 							</tool>
@@ -254,6 +351,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/qe_gen}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.D.625830617" name="Macro definition (-D)" superClass="com.renesas.cdt.managedbuild.renesas.ccrl.compiler.option.D" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="QE_TOUCH_CONFIGURATION"/>
@@ -282,6 +380,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_UARTA1}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_ITL000_ITL001_ITL012_ITL013}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_TAU0_1}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/Config_PORT}&quot;"/>
 								</option>
 								<inputType id="Base.Assembler.ccrl.inputType.1366879883" name="Assembler InputType" superClass="Base.Assembler.ccrl.inputType"/>
 							</tool>
@@ -344,5 +443,12 @@
 		</project-mappings>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="HardwareDebug">
+			<resource resourceType="PROJECT" workspacePath="/G23_RSSK_0425"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/G23_RSSK_0425"/>
+		</configuration>
+	</storageModule>
 </cproject>

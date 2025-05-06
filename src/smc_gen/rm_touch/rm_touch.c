@@ -42,6 +42,8 @@
  #endif
 #endif
 
+#include "Filter/slider_jump_simple.h"
+
 /***********************************************************************************************************************
  * Macro definitions
  **********************************************************************************************************************/
@@ -919,17 +921,6 @@ fsp_err_t RM_TOUCH_ScanStart (touch_ctrl_t * const p_ctrl)
  * @retval FSP_ERR_CTSU_SCANNING    Scanning this instance.
  * @retval FSP_ERR_CTSU_INCOMPLETE_TUNING      Incomplete initial offset tuning.
  **********************************************************************************************************************/
-/* Add additional process for slider - CUSTOMIZATION*/
-uint16_t slider_data[TOUCH_SLIDER_ELEMENTS_MAX];
-uint16_t delta_data[TOUCH_SLIDER_ELEMENTS_MAX];
-uint32_t s_drift_buf[TOUCH_CFG_NUM_SLIDERS][TOUCH_SLIDER_ELEMENTS_MAX];
-uint16_t s_drift_count[TOUCH_CFG_NUM_SLIDERS][TOUCH_SLIDER_ELEMENTS_MAX];
-uint16_t s_drift[TOUCH_CFG_NUM_SLIDERS][TOUCH_SLIDER_ELEMENTS_MAX];
-uint8_t	s_drift_init[TOUCH_CFG_NUM_SLIDERS];
-uint16_t s_delta[TOUCH_CFG_NUM_SLIDERS][TOUCH_SLIDER_ELEMENTS_MAX];
-#define SLIDER_DRIFT	255
-/* Add additional process for slider - CUSTOMIZATION*/
-
 fsp_err_t RM_TOUCH_DataGet (touch_ctrl_t * const p_ctrl,
                             uint64_t           * p_button_status,
                             uint16_t           * p_slider_position,
@@ -944,7 +935,7 @@ fsp_err_t RM_TOUCH_DataGet (touch_ctrl_t * const p_ctrl,
 #if (TOUCH_CFG_NUM_SLIDERS != 0)
     const touch_slider_cfg_t * p_slider;
     uint8_t  slider_id;
-    //uint16_t slider_data[TOUCH_SLIDER_ELEMENTS_MAX];
+    uint16_t slider_data[TOUCH_SLIDER_ELEMENTS_MAX];
 #endif
 #if (TOUCH_CFG_NUM_WHEELS != 0)
     const touch_wheel_cfg_t * p_wheel;
@@ -1020,61 +1011,18 @@ fsp_err_t RM_TOUCH_DataGet (touch_ctrl_t * const p_ctrl,
             slider_data[element_id] = sensor_val;
         }
 
-        /* Add additional process for slider - CUSTOMIZATION*/
-        //get initial value for slider drift at first time
-        if(s_drift_init[slider_id] == 0)
+        touch_slider_decode(&p_instance_ctrl->sinfo, slider_data, p_slider->num_elements, slider_id);
+
+        if (p_slider_position != NULL)
         {
-            for (element_id = 0; element_id < p_slider->num_elements; element_id++)
-            {
-            	s_drift[slider_id][element_id] = slider_data[element_id];
-            }
-            s_drift_init[slider_id] = 1;
+            /* 应用滤波器处理滑条位置 */
+            uint16_t raw_pos = *(p_instance_ctrl->sinfo.p_position + slider_id);
+            uint16_t filtered_pos = slider_simple_filter(raw_pos);
+
+            /* 返回滤波后的位置 */
+            *p_slider_position = filtered_pos;
+            p_slider_position++;
         }
-        //If not the first time, calculate new slider drift
-        else
-        {
-
-				for (element_id = 0; element_id < p_slider->num_elements; element_id++)
-				{
-					//delta = count - reference
-					if(slider_data[element_id] >= s_drift[slider_id][element_id])
-						s_delta[slider_id][element_id] = slider_data[element_id] - s_drift[slider_id][element_id];
-					else
-						s_delta[slider_id][element_id] = 0;
-
-					//if no position result, calculate new reference
-		        	if(*(p_instance_ctrl->sinfo.p_position + slider_id) == 65535)
-		        	{
-						s_drift_buf[slider_id][element_id] += slider_data[element_id];
-						if(s_drift_count[slider_id][element_id] ++== SLIDER_DRIFT)
-						{
-							s_drift[slider_id][element_id] = s_drift_buf[slider_id][element_id] / SLIDER_DRIFT;
-							s_drift_count[slider_id][element_id] = 0;
-							s_drift_buf[slider_id][element_id] = 0;
-						}
-		        	}
-		        	//if position result existing, reset reference calculation buffer and counter
-					else
-					{
-						s_drift_count[slider_id][element_id] = 0;
-						s_drift_buf[slider_id][element_id] = 0;
-					}
-				}
-
-        }
-
-        for (element_id = 0; element_id < p_slider->num_elements; element_id++)
-        {
-        	delta_data[element_id] = s_delta[slider_id][element_id];
-        }
-
-        //touch_slider_decode(&p_instance_ctrl->sinfo, slider_data, p_slider->num_elements, slider_id);
-        touch_slider_decode(&p_instance_ctrl->sinfo, delta_data, p_slider->num_elements, slider_id);
-        /* Add additional process for slider - CUSTOMIZATION*/
-
-
-        *p_slider_position = *(p_instance_ctrl->sinfo.p_position + slider_id);
-        p_slider_position++;
     }
 
 #else
@@ -1280,8 +1228,13 @@ fsp_err_t RM_TOUCH_DataGet (touch_ctrl_t * const p_ctrl,
             g_touch_monitor_buf[index++] = p_instance_ctrl->p_touch_cfg->num_sliders;
             for (i = 0; i < p_instance_ctrl->p_touch_cfg->num_sliders; i++)
             {
-                g_touch_monitor_buf[index++] = (uint8_t) (p_instance_ctrl->sinfo.p_position[i]);
-                g_touch_monitor_buf[index++] = (uint8_t) (p_instance_ctrl->sinfo.p_position[i] >> 8);
+                /* 应用滤波器处理滑条位置 */
+                uint16_t raw_pos = p_instance_ctrl->sinfo.p_position[i];
+                uint16_t filtered_pos = slider_simple_filter(raw_pos);
+
+                /* 发送滤波后的位置数据 */
+                g_touch_monitor_buf[index++] = (uint8_t) (filtered_pos);
+                g_touch_monitor_buf[index++] = (uint8_t) (filtered_pos >> 8);
                 g_touch_monitor_buf[index++] = (uint8_t) (p_instance_ctrl->sinfo.p_threshold[i]);
                 g_touch_monitor_buf[index++] = (uint8_t) (p_instance_ctrl->sinfo.p_threshold[i] >> 8);
             }
@@ -1974,7 +1927,7 @@ fsp_err_t RM_TOUCH_DriftControl (touch_ctrl_t * const p_ctrl, uint16_t input_dri
 }
 
 /*******************************************************************************************************************//**
- * @brief This function get the variable address of QE Monitor. 
+ * @brief This function get the variable address of QE Monitor.
  * This function is used for QE Monitor when both automatic judgement and software judgement are operated.
  * Implements @ref touch_api_t::monitorAddressGet
  *
@@ -2583,20 +2536,22 @@ void touch_button_mutual_drift (touch_button_info_t * p_binfo, int16_t value, to
  *              : uint8_t  slider_id           : Slider ID
  * Return Value : None
  ***********************************************************************************************************************/
-uint8_t  max_data_num;
-uint32_t d1;
-uint32_t d2;
-uint16_t d3;
+extern uint16_t slider_simple_filter(uint16_t raw);
+uint16_t pos_raw;
+uint16_t pos_flt;
 uint16_t slider_rpos;
-uint16_t slider_rpos_result;
-uint16_t slider_rpos_original;
-uint16_t resol_plus;
-uint16_t dsum;
+
 void touch_slider_decode (touch_slider_info_t * p_sinfo, uint16_t * slider_data, uint8_t num_elements,
                           uint8_t slider_id)
 {
     uint8_t  loop;
+    uint8_t  max_data_num;
+    uint32_t d1;
+    uint32_t d2;
+    uint16_t d3;
 
+    uint16_t resol_plus;
+    uint16_t dsum;
 
     if (num_elements < 3)
     {
@@ -2633,14 +2588,7 @@ void touch_slider_decode (touch_slider_info_t * p_sinfo, uint16_t * slider_data,
         d2 = (uint16_t) (slider_data[max_data_num] - slider_data[max_data_num + 1]);
     }
 
-    /* Add additional process for slider - CUSTOMIZATION*/
-    //dsum = (uint16_t) (d1 + d2);
-    dsum = 0;
-    for(loop=0; loop<num_elements; loop++)
-    {
-    	dsum += delta_data[loop];
-    }
-    /* Add additional process for slider - CUSTOMIZATION*/
+    dsum = (uint16_t) (d1 + d2)*2;
 
     /* Constant decision for operation of angle of slider */
     /* Scale results to be 0-TOUCH_SLIDER_RESOLUTION */
@@ -2703,7 +2651,9 @@ void touch_slider_decode (touch_slider_info_t * p_sinfo, uint16_t * slider_data,
     {
         slider_rpos = TOUCH_OFF_VALUE;
     }
-
+    pos_raw = slider_rpos;                   // 原始
+    pos_flt = slider_simple_filter(pos_raw); // 平滑
+    slider_rpos = pos_flt;                   // 覆盖或另存
     *(p_sinfo->p_position + slider_id) = slider_rpos;
 }                                      /* End of function touch_slider_decode() */
 
@@ -3270,7 +3220,7 @@ void touch_uart_callback (uint16_t event)
   #endif
                 ctsusnum = (uint8_t) ((*p_ctsusnum >> TOUCH_UART_CTSUSNUM_SHIFT) & TOUCH_UART_CTSUSNUM_MASK);
                 ctsusdpa = (uint8_t) ((*p_ctsusdpa >> TOUCH_UART_CTSUSDPA_SHIFT) & TOUCH_UART_CTSUSDPA_MASK);
-                if ((g_touch_uart_rx_buf[1] == TOUCH_UART_COMMAND_THREE_FREQ_READ) || 
+                if ((g_touch_uart_rx_buf[1] == TOUCH_UART_COMMAND_THREE_FREQ_READ) ||
                     (g_touch_uart_rx_buf[1] == TOUCH_UART_COMMAND_READ))
                 {
                     /* Drift Correction */

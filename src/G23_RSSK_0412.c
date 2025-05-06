@@ -27,6 +27,7 @@
 #include "Debug_UART/debug_uart.h"
 #include <stdio.h>
 #include "qe_touch_config.h"
+#include "slider_jump_app.h"
 
 extern void qe_touch_main(void);
 int main (void);
@@ -60,6 +61,9 @@ int main(void)
     {
         while (true) {}
     }
+
+        /* 初始化跳变滤波器应用 */
+        slider_jump_app_init();
 
     /* Debug库配置 */
     DebugConfig_t cfg = 

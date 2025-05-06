@@ -1,4 +1,4 @@
--MAKEUD="C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\HardwareDebug/G23_RSSK_0412_l.ud" 
+-MAKEUD="C:\e2workspace_202307_01\RL78_touch\G23_RSSK_0412\HardwareDebug/G23_RSSK_0412_l.ud" 
 -device="C:/Users/a5140073/.eclipse/com.renesas.platform_1297214930/DebugComp/RL78/RL78/Common/DR7F100GSN.DVF" 
 -list="G23_RSSK_0412.map" 
 -nooptimize 

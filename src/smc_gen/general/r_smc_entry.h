@@ -28,6 +28,7 @@
 Includes
 ***********************************************************************************************************************/
 #include "r_cg_macrodriver.h"
+#include "Config_PORT.h"
 #include "Config_ITL000_ITL001_ITL012_ITL013.h"
 #include "Config_TAU0_1.h"
 #include "Config_UARTA1.h"

@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+对于smc_gen目录之内的文件，尽量不要修改，如果必须修改，新增代码只能在如下区域中间位置，或者定义一个宏，要求设置这个宏之后就能一键改动，不能耦合太深，因为smc_gen目录的代码会不定期更新，被覆盖，一旦被覆盖，要想办法在新的代码之上很容易再把更改的代码加进去
+/* Start user code for adding. Do not edit comment generated here */
+/* End user code. Do not edit comment generated here */
+
+

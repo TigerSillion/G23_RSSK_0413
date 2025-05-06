@@ -12,7 +12,8 @@ extern uint16_t g_uarta1_tx_count;
 /* 全局毫秒计数器 */
 extern volatile uint32_t g_msCounter;
 
-#define UART_SEND(data, length) R_Config_UARTA1_Send((uint8_t *)(data), length)
+//#define UART_SEND(data, length) R_Config_UARTA1_Send((uint8_t *)(data), length)
+#define UART_SEND(data, length) NOP()
 
 /**
  * @brief  获取当前毫秒计数

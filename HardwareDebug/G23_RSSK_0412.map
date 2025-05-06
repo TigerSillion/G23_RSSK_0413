@@ -1,9 +1,9 @@
-Renesas Optimizing Linker (V3.07.00 )             12-Apr-2025 23:34:16
+Renesas Optimizing Linker (V3.07.00 )             23-Apr-2025 22:09:14
 
 *** Options ***
 
 -subcommand=LinkerG23_RSSK_0412.tmp
--MAKEUD="C:\e2workspace_202307_01\RL78_202504\G23_RSSK_0412\HardwareDebug/G23_RSSK_0412_l.ud" 
+-MAKEUD="C:\e2workspace_202307_01\RL78_touch\G23_RSSK_0412\HardwareDebug/G23_RSSK_0412_l.ud" 
 -device="C:/Users/a5140073/.eclipse/com.renesas.platform_1297214930/DebugComp/RL78/RL78/Common/DR7F100GSN.DVF" 
 -list="G23_RSSK_0412.map" 
 -nooptimize 
